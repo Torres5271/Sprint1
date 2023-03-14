@@ -28,12 +28,14 @@ alter table fornecedores add column estado varchar(30);
 update fornecedores set estado = 'sao paulo'
 where idfornecedor = 1;
 
+delete from fornecedores where idfornecedor = 8;
 
 select * from fornecedores where estado like '%s';
 select * from fornecedores where nome = 'mallmann';
 
+alter table fornecedores drop column estado;
 truncate table fornecedores;
- 
+ drop table fornecedores;
  
  create table cadastro (
 idCadastro int primary key auto_increment,
