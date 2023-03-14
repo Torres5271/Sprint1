@@ -10,7 +10,7 @@
     <h1 style="color: red;">Orçamento</h1><br>
     Insira a distancia(em Km) de sua plantaçao ao destino:<br>
     <input id="ipt_km" type="number"><br>
-    Quantidade de quiilos que você deseja que transportamos:<br>
+    Quantidade de quilos que você deseja que transportamos:<br>
     <input id="ipt_kg" type="number"><br>
     <button onclick="calcular()">Calcular orçamento</button>
     <div id="div_calculo"></div>
@@ -23,15 +23,21 @@ function calcular(){
     var frete_normal = 7.87;
     var frete_km_normal = frete_normal * km;
     var perda = kg*0.30;
+
     var valerin_frete = 1.96 + frete_normal;
-    var preco_valerin_km = km * valerin_frete;
+    var preco_transporte = km * valerin_frete;
     var perda_c_valerin = kg*0.05;
-    var diferença = preco_valerin_km - frete_km_normal 
+    var diferença = preco_transporte - frete_km_normal;
+
+    var mao_de_obra = 120;
+    var valor_total = 120 + preco_transporte;
 
     div_calculo.innerHTML = `Em média contratando uma empresa comum de transpostes
     gastaria-se ${frete_km_normal} reais podendo ter uma perda de até 30% que seriam
-     <b style="color: red;">${perda} kg</b> de tomate desperdiçados <br>`;
+     <b style="color: red;">${perda} kg</b> de tomate desperdiçados <br><br>`;
+     
     div_calculo.innerHTML += `Já contratando a valerin transportes se gasta
-     ${preco_valerin_km} reais tendo uma perda de até 5% sendo <b style="color: green;">${perda_c_valerin} kg</b> de tomate caso a viagem seja como planejado`;
+     ${preco_transporte} reais tendo uma perda de até 5% sendo <b style="color: green;">${perda_c_valerin} kg</b> de tomate caso a viagem seja como planejado<br><br>`;
+     div_calculo.innerHTML += `Valor Total: (mão de obra) ${mao_de_obra} + (valor do transporte) ${preco_transporte} = <b style="color: green;">${valor_total}</b>`
 }
 </script>
